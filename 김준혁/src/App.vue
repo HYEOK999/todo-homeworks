@@ -1,22 +1,30 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
+    <TodoInput v-on:addTodo="addTodo"></TodoInput>
+    <TodoList></TodoList>
   </div>
 </template>
 
 <script>
 import TodoHeader from './components/TodoHeader.vue'
+import TodoInput from './components/TodoInput.vue'
 
 export default {
   data: function(){
     return{
-      scasular: []
+      schedules: []
   }
 },
   methods: {
+      addTodo(schedule) {
+			localStorage.setItem(schedule, schedule);
+			this.schedules.push(schedule);
+		},
   },
   components: {
     'TodoHeader' : TodoHeader,
+    'TodoInput' : TodoInput,
   },
 }
 </script>
