@@ -2,13 +2,16 @@
   <div id="app">
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList></TodoList>
+    <TodoList v-bind:propsdata="schedules" @removeTodo="removeTodo"></TodoList>
+    <TodoFooter v-on:removeAll="clearTodo"></TodoFooter>
   </div>
 </template>
 
 <script>
 import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
+import TodoList from './components/TodoList.vue'
+import TodoFooter from './components/TodoFooter.vue'
 
 export default {
   data: function(){
@@ -17,14 +20,24 @@ export default {
   }
 },
   methods: {
-      addTodo(schedule) {
+    addTodo(schedule) {
 			localStorage.setItem(schedule, schedule);
 			this.schedules.push(schedule);
-		},
+    },
+    removeTodo(schedule, index) {
+      localStorage.removeItem(schedule);
+      this.schedules.splice(index, 1);
+    },
+    clearTodo(){
+      localStorage.clear();
+      this.schedules = [];
+    }
   },
   components: {
     'TodoHeader' : TodoHeader,
     'TodoInput' : TodoInput,
+    'TodoList': TodoList,
+    'TodoFooter' : TodoFooter
   },
 }
 </script>

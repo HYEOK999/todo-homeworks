@@ -20,6 +20,9 @@ export default {
 				this.$emit('addTodo', value)
                 this.clearInput();
             }
+        },
+        clearInput(){
+            this.InputSchedule = '';
         }
     },
 }
