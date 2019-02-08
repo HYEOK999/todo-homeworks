@@ -1,9 +1,9 @@
 <template>
     <section>
-        <ul>
-            <li v-for="(schedule, index) in propsdata" :key="schedule">
+        <ul class="list-group">
+            <li class="list-group-item" v-for="(schedule, index) in propsdata" :key="schedule">
                 {{ schedule }}
-            <button v-on:click="removeTodo(schedule, index)">삭제</button>
+            <button class="btn btn-warning" v-on:click="removeTodo(schedule, index)">삭제</button>
             </li>
         </ul>
     </section>
@@ -21,5 +21,4 @@ export default {
 </script>
 
 <style>
-
 </style>

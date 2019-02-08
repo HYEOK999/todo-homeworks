@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-on:click="clearTodo">전체 지우기</button>
+        <button id='a' type="button" class="btn btn-outline-danger" v-on:click="clearTodo">전체 지우기</button>
     </div>
 </template>
 
@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style>
-
+#a{margin-top: 10px}
 </style>
